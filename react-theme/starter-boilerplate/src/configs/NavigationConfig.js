@@ -10,7 +10,15 @@ const dashBoardNavTree = [{
   icon: DashboardOutlined,
   breadcrumb: false,
   submenu: []
-}]
+},{
+  key: 'function',
+  path: `${APP_PREFIX_PATH}/function`,
+  title: 'function',
+  icon: DashboardOutlined,
+  breadcrumb: false,
+  submenu: []
+}
+]
 
 const navigationConfig = [
   ...dashBoardNavTree
