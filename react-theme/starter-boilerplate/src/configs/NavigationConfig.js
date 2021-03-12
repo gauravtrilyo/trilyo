@@ -17,6 +17,20 @@ const dashBoardNavTree = [{
   icon: DashboardOutlined,
   breadcrumb: false,
   submenu: []
+},{
+  key: 'test1',
+  path: `${APP_PREFIX_PATH}/test1`,
+  title: 'test1',
+  icon: DashboardOutlined,
+  breadcrumb: false,
+  submenu: []
+},{
+  key: 'test2',
+  path: `${APP_PREFIX_PATH}/test2`,
+  title: 'test2',
+  icon: DashboardOutlined,
+  breadcrumb: false,
+  submenu: []
 }
 ]
 

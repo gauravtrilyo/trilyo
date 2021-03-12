@@ -22,7 +22,7 @@ function MonacoEditor() {
         <h1 style={{alignItems:'self-start'}}>Monaco Editor</h1>
         <div className="editor" >
         <Editor 
-            theme="vs-dark"
+            
             height="80vh"
             width="70vw"
             defaultLanguage = "javascript"
