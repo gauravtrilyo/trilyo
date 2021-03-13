@@ -5,6 +5,7 @@ import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { GoogleSVG, FacebookSVG } from 'assets/svg/icon';
 import CustomIcon from 'components/util-components/CustomIcon'
+import axios from 'axios'
 import {  
 	showLoading, 
 	showAuthMessage, 
@@ -14,7 +15,6 @@ import {
 import JwtAuthService from 'services/JwtAuthService'
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
-import ExampleService from "services/ExampleService"
 
 export const LoginForm = (props) => {
 	let history = useHistory();
@@ -36,21 +36,20 @@ export const LoginForm = (props) => {
 		allowRedirect
 	} = props
 
-	const onLogin = values => {
+	const onLogin = async values => {
 		showLoading()
-		const fakeToken = 'fakeToken'
+		// const fakeToken = 'fakeToken'
 		console.log(values)
-		ExampleService.fetchData(values).then(resp => {
-			authenticated(fakeToken)
+		const {email,password} = values
+		const response = await axios.post("http://localhost:8080/api/login",{email,password})
+		// console.log(response.data, response.data.data)
+		const token = response.data.token
+		localStorage.setItem("token",token )
+		JwtAuthService.login(values).then(resp => {
+			authenticated(token)
 		}).then(e => {
 			showAuthMessage(e)
 		})
-		
-		// JwtAuthService.login(values).then(resp => {
-		// 	authenticated(fakeToken)
-		// }).then(e => {
-		// 	showAuthMessage(e)
-		// })
 	};
 
 	const onGoogleLogin = () => {
