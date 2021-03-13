@@ -18,4 +18,15 @@ exampleService.setPost = function (data) {
   })
 }
 
+exampleService.fetchData = function (data) {
+	return fetch({
+		url: '/login',
+		method: 'post',
+		headers: {
+      'public-request': 'true'
+    },
+		body: JSON.stringify(data)
+	})
+}
+
 export default exampleService

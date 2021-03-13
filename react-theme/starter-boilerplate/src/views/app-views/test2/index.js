@@ -1,5 +1,14 @@
 import React from 'react'
 import  { Redirect } from 'react-router-dom'
+import exampleService from '../../../services/ExampleService'
+
+function fetchData(){
+  exampleService.fetchData(JSON.stringify({
+    user:'foo2',
+    password:'foo2'
+  })).then(resp => console.log('resp', resp))
+}
+fetchData()
 
 const test2 = (props) => {
 	if (!props.token)
@@ -8,3 +17,5 @@ const test2 = (props) => {
 }
 
 export default test2
+
+

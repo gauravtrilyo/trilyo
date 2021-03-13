@@ -14,6 +14,7 @@ import {
 import JwtAuthService from 'services/JwtAuthService'
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
+import ExampleService from "services/ExampleService"
 
 export const LoginForm = (props) => {
 	let history = useHistory();
@@ -38,11 +39,18 @@ export const LoginForm = (props) => {
 	const onLogin = values => {
 		showLoading()
 		const fakeToken = 'fakeToken'
-		JwtAuthService.login(values).then(resp => {
+		console.log(values)
+		ExampleService.fetchData(values).then(resp => {
 			authenticated(fakeToken)
 		}).then(e => {
 			showAuthMessage(e)
 		})
+		
+		// JwtAuthService.login(values).then(resp => {
+		// 	authenticated(fakeToken)
+		// }).then(e => {
+		// 	showAuthMessage(e)
+		// })
 	};
 
 	const onGoogleLogin = () => {
